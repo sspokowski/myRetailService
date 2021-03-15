@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 dotenv.config();
 import express from 'express';
-import routes from './src/routes/productRoutes.js'
+import routes from './src/routes/productRoutes'
 import mongoose from 'mongoose';
 
 //set up db connection

@@ -1,6 +1,6 @@
-import Product from './../models/product.js';
-import priceModel from './../models/price.js';
-import getProduct from '../serviceIntegration/redsky.js'
+import Product from './../models/product';
+import priceModel from './../models/price';
+import getProduct from '../serviceIntegration/redsky'
 
 class ProductController {
 
