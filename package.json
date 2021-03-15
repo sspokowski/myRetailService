@@ -1,0 +1,37 @@
+{
+  "name": "myretailservice",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "lint": "npx eslint src",
+    "nodemon": "npx nodemon  index.js",
+    "start": "node --es-module-specifier-resolution=node index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sspokowski/myRetailService.git"
+  },
+  "author": "sspokowski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sspokowski/myRetailService/issues"
+  },
+  "homepage": "https://github.com/sspokowski/myRetailService#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.4",
+    "mongoose": "^5.12.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "eslint": "^7.22.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.7",
+    "standard": "^16.0.3"
+  }
+}
