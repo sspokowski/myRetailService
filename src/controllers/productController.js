@@ -17,7 +17,7 @@ class ProductController {
         }
 
         try{
-            price = await priceModel.find({productId: `${id}`})[0];
+            price = await priceModel.find({productId: `${id}`});
         } catch (error) {
             console.error('An error occurred during the mongo pricing lookup.', error);
             res.status(500).send('An error occurred.');
@@ -25,7 +25,7 @@ class ProductController {
         }
 
         try {
-            productData = new Product(id, productName, price.price);
+            productData = new Product(id, productName, price[0].price);
             res.send(productData);
         } catch (error) {
             console.error('something went wrong creating a new product data object.', error);
