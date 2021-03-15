@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "52ce1d57-eba6-491c-b26c-f9c6d2cc2ef7",
+		"name": "myRetailService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getLebowski",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Product data for The Big Lebowski should be returned\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.eql('13860428');\r",
+							"    pm.expect(jsonData.name).to.eql('The Big Lebowski (Blu-ray)');\r",
+							"    pm.expect(jsonData.current_price.value).to.eql(13.49);\r",
+							"    pm.expect(jsonData.current_price.currency_code).to.eql('USD');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://myretail-service.herokuapp.com/products/13860428",
+					"protocol": "https",
+					"host": [
+						"myretail-service",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"products",
+						"13860428"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateLebowski",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"13860428\",\r\n    \"name\": \"The Big Lebowski (Blu-ray)\",\r\n    \"current_price\": {\r\n        \"value\": 13.99,\r\n        \"currency_code\": \"USD\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://myretail-service.herokuapp.com/products/13860428",
+					"protocol": "https",
+					"host": [
+						"myretail-service",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"products",
+						"13860428"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateLebowskiCheck",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Product data for The Big Lebowski should be returned\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.eql('13860428');\r",
+							"    pm.expect(jsonData.name).to.eql('The Big Lebowski (Blu-ray)');\r",
+							"    pm.expect(jsonData.current_price.value).to.eql(13.99);\r",
+							"    pm.expect(jsonData.current_price.currency_code).to.eql('USD');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://myretail-service.herokuapp.com/products/13860428",
+					"protocol": "https",
+					"host": [
+						"myretail-service",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"products",
+						"13860428"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateLebowskiRevert",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"13860428\",\r\n    \"name\": \"The Big Lebowski (Blu-ray)\",\r\n    \"current_price\": {\r\n        \"value\": 13.49,\r\n        \"currency_code\": \"USD\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://myretail-service.herokuapp.com/products/13860428",
+					"protocol": "https",
+					"host": [
+						"myretail-service",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"products",
+						"13860428"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

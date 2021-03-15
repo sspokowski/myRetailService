@@ -8,7 +8,8 @@
     "lint": "npx eslint src",
     "nodemon": "npx nodemon  index.js",
     "start": "node --es-module-specifier-resolution=node index.js",
-    "test": "jest"
+    "poststart": "npm run test",
+    "test": "newman run test/myRetailService.json"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,8 @@
     "axios": "^0.21.1",
     "express": "^4.17.1",
     "mongodb": "^3.6.4",
-    "mongoose": "^5.12.0"
+    "mongoose": "^5.12.0",
+    "newman": "^5.2.2"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
