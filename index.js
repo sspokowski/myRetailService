@@ -1,15 +1,18 @@
 import express from 'express';
-import routes from './src/routes/productRoutes'
+import routes from './src/routes/productRoutes';
 import mongoose from 'mongoose';
-
+import swaggerUiDist from 'swagger-ui-dist';
 //set up db connection
 const uri = process.env.MONGO_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
+//set up swagger docs
+const pathToSwaggerUi = swaggerUiDist.absolutePath();
+
 //set up server
 const app = express();
 const port = process.env.PORT || 3000;
-
+app.use(express.static(pathToSwaggerUi));
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 app.use('/', routes);
