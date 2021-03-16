@@ -15,8 +15,8 @@ const port = process.env.PORT || 3000;
 //set up docs
 const pathToSwaggerUi = swaggerUi.absolutePath();
 app.use(express.static(pathToSwaggerUi));
-app.use(express.static(path.join(path.resolve(), './docs/myRetailProductServiceApi.json')));
 app.use('/docs', express.static(path.join(path.resolve(), './docs/index.html')));
+app.use('docs/myRetailProductServiceApi', express.static(path.join(path.resolve(), './docs/myRetailProductServiceApi.json')));
 
 //set up request body parsing
 app.use(express.json()) 
