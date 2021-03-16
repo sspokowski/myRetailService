@@ -5,7 +5,7 @@ This a web service built on NodeJS using Express.  It is backed by a MongoDB doc
 
 I had intended to use Jest for unit testing, but I didn't actually end up writing any/very much code that was unit testable.  Instead, I opted to test using Postman and created a 'collection' that gets executed via Newman.  These tests can be executed using ```npm test``` and theyh also run after the server is deployed.  ESLint, using the AirBnB standards, is used to enforce style.
 
-The [API specification for this service can be found here](https://myretail-service.herokuapp.com/docs/).  It was documented using the OpenAPI v3 specification and is built using Swagger.
+The [API specification for this service can be found here](https://myretail-service.herokuapp.com/docs).  It was documented using the OpenAPI v3 specification and is built using Swagger.
 
 ## Background
 myRetail is a rapidly growing company with HQ in Richmond, VA and over 200 stores across the east coast. 
