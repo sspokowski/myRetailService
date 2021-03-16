@@ -1,0 +1,129 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "myRetail Product Serivce",
+    "description": "This document defines the interface for ineracting with the RESTful Product Service from myRetail.  This service exposes product and price details by ID",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://myretail-service.herokuapp.com/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "product",
+      "description": "Product details"
+    }
+  ],
+  "paths": {
+    "/product/{id}": {
+      "post": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Updates a products details.",
+        "operationId": "addPet",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of product to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Pet object that needs to be added to the store",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Product updated"
+          },
+          "404": {
+            "description": "Error occurred",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      },
+      "get": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Find Products by ID",
+        "description": "Multiple status values can be provided with comma separated strings",
+        "operationId": "findPetsByStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of product to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "content": {}
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Product": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "current_price": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "number"
+              },
+              "currency_code": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
