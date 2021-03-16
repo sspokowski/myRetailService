@@ -3,20 +3,25 @@ import routes from './src/routes/productRoutes';
 import mongoose from 'mongoose';
 import path from 'path';
 import swaggerUi from 'swagger-ui-dist';
+
 //set up db connection
 const uri = process.env.MONGO_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-const pathToSwaggerUi = swaggerUi.absolutePath();
-
 //set up server
 const app = express();
 const port = process.env.PORT || 3000;
-console.log(path.join(path.resolve(), './docs/index.html'));
+
+//set up docs
+const pathToSwaggerUi = swaggerUi.absolutePath();
 app.use(express.static(pathToSwaggerUi));
 app.use('/docs', express.static(path.join(path.resolve(), './docs/index.html')));
-app.use(express.json()) // for parsing application/json
-app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+//set up request body parsing
+app.use(express.json()) 
+app.use(express.urlencoded({ extended: true })) 
+
+//apply routes
 app.use('/', routes);
 
 //catch all other routes
