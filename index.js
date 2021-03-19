@@ -19,8 +19,8 @@ app.use('/docs', express.static(path.join(path.resolve(), './docs/index.html')))
 app.use('/docs/myRetailProductServiceApi', express.static(path.join(path.resolve(), './docs/myRetailProductServiceApi.json')));
 
 //set up request body parsing
-app.use(express.json()) 
-app.use(express.urlencoded({ extended: true })) 
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true }));
 
 //apply routes
 app.use('/', routes);
