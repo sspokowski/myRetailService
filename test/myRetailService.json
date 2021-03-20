@@ -153,6 +153,84 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "getBadProductCode",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"500 response and error message should be returned for bad product IDs\", function () {\r",
+							"    pm.response.to.have.status(500);\r",
+							"    pm.response.to.have.body('An error occurred.');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://myretail-service.herokuapp.com/products/1",
+					"protocol": "https",
+					"host": [
+						"myretail-service",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateBadProductCode",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"13860428\",\r\n    \"name\": \"The Big Lebowski (Blu-ray)\",\r\n    \"current_price\": {\r\n        \"value\": 13.99,\r\n        \"currency_code\": \"USD\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://myretail-service.herokuapp.com/products/13860428",
+					"protocol": "https",
+					"host": [
+						"myretail-service",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"products",
+						"13860428"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

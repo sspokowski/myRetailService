@@ -1,236 +1,126 @@
 {
-	"info": {
-		"_postman_id": "52ce1d57-eba6-491c-b26c-f9c6d2cc2ef7",
-		"name": "myRetailService",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "getLebowski",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Product data for The Big Lebowski should be returned\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.id).to.eql('13860428');\r",
-							"    pm.expect(jsonData.name).to.eql('The Big Lebowski (Blu-ray)');\r",
-							"    pm.expect(jsonData.current_price.value).to.eql(13.49);\r",
-							"    pm.expect(jsonData.current_price.currency_code).to.eql('USD');\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://myretail-service.herokuapp.com/products/13860428",
-					"protocol": "https",
-					"host": [
-						"myretail-service",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"products",
-						"13860428"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "updateLebowski",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\": \"13860428\",\r\n    \"name\": \"The Big Lebowski (Blu-ray)\",\r\n    \"current_price\": {\r\n        \"value\": 13.99,\r\n        \"currency_code\": \"USD\"\r\n    }\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://myretail-service.herokuapp.com/products/13860428",
-					"protocol": "https",
-					"host": [
-						"myretail-service",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"products",
-						"13860428"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "updateLebowskiCheck",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Product data for The Big Lebowski should be returned\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.id).to.eql('13860428');\r",
-							"    pm.expect(jsonData.name).to.eql('The Big Lebowski (Blu-ray)');\r",
-							"    pm.expect(jsonData.current_price.value).to.eql(13.99);\r",
-							"    pm.expect(jsonData.current_price.currency_code).to.eql('USD');\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://myretail-service.herokuapp.com/products/13860428",
-					"protocol": "https",
-					"host": [
-						"myretail-service",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"products",
-						"13860428"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "updateLebowskiRevert",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\": \"13860428\",\r\n    \"name\": \"The Big Lebowski (Blu-ray)\",\r\n    \"current_price\": {\r\n        \"value\": 13.49,\r\n        \"currency_code\": \"USD\"\r\n    }\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://myretail-service.herokuapp.com/products/13860428",
-					"protocol": "https",
-					"host": [
-						"myretail-service",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"products",
-						"13860428"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getBadProductCode",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"500 response and error message should be returned for bad product IDs\", function () {\r",
-							"    pm.response.to.have.status(500);\r",
-							"    pm.response.to.have.body('An error occurred.');\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://myretail-service.herokuapp.com/products/1",
-					"protocol": "https",
-					"host": [
-						"myretail-service",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"products",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "updateBadProductCode",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\": \"13860428\",\r\n    \"name\": \"The Big Lebowski (Blu-ray)\",\r\n    \"current_price\": {\r\n        \"value\": 13.99,\r\n        \"currency_code\": \"USD\"\r\n    }\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://myretail-service.herokuapp.com/products/13860428",
-					"protocol": "https",
-					"host": [
-						"myretail-service",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"products",
-						"13860428"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "openapi": "3.0.1",
+  "info": {
+    "title": "myRetail Product Serivce",
+    "description": "This document defines the interface for ineracting with the RESTful Product Service from myRetail.  This service exposes product and price details by ID",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://myretail-service.herokuapp.com/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "product",
+      "description": "Product details"
+    }
+  ],
+  "paths": {
+    "/product/{id}": {
+      "post": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Updates a products details.",
+        "operationId": "addPet",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of product to return",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Pet object that needs to be added to the store",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Product updated"
+          },
+          "404": {
+            "description": "Error occurred",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      },
+      "get": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Find Products by ID",
+        "description": "Multiple status values can be provided with comma separated strings",
+        "operationId": "findPetsByStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of product to return",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "content": {}
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Product": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "current_price": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "number"
+              },
+              "currency_code": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
