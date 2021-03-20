@@ -31,8 +31,7 @@
             "description": "ID of product to return",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "integer"
             }
           }
         ],
@@ -72,8 +71,7 @@
             "description": "ID of product to return",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "integer"
             }
           }
         ],
@@ -105,8 +103,7 @@
         "type": "object",
         "properties": {
           "productId": {
-            "type": "integer",
-            "format": "int64"
+            "type": "integer"
           },
           "name": {
             "type": "string"
